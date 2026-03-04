@@ -5,15 +5,17 @@ import Footer from '@/Components/Footer';
 import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
-export default function PrestationDetail({ prestation }) {
+export default function Anniversaires() {
+    const images = [1, 2, 3, 4, 5];
+
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % prestation.images.length);
+        setCurrentSlide((prev) => (prev + 1) % images.length);
     };
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + prestation.images.length) % prestation.images.length);
+        setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
     };
 
     const goToSlide = (index) => {
@@ -22,73 +24,46 @@ export default function PrestationDetail({ prestation }) {
 
     return (
         <>
-            <Head title={prestation.title} />
+            <Head title="Anniversaires - Stoon Events" />
+            <Navbar />
+            <SocialSidebar />
+            <WhatsAppButton />
             
             <div className="min-h-screen bg-gray-50">
-                <Navbar />
-                <SocialSidebar />
-                <WhatsAppButton />
-
                 {/* Hero Section */}
-                <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
-                    <img
-                        src={prestation.images[0]}
-                        alt={prestation.title}
+                <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+                    <img 
+                        src="/assets/images/nosPrestations/anniversaire/2.jpeg" 
+                        alt="Anniversaires" 
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                    
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="container mx-auto px-4 text-center">
-                            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                                {prestation.title}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+                        <div>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                                Anniversaires
                             </h1>
-                            <div className="flex items-center justify-center gap-2 mb-4">
-                                <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                                <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                                <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                                <div className="w-32 h-1 rounded-full bg-yellow-400" />
-                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Description Section */}
-                <section className="py-16 bg-white">
-                    <div className="container mx-auto px-4 lg:px-8">
-                        <div className="max-w-4xl mx-auto">
-                            <p className="text-xl text-gray-700 leading-relaxed mb-8">
-                                {prestation.description}
+                {/* Description */}
+                <section className="py-16 md:py-20">
+                    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl">
+                        <div className="prose prose-lg max-w-none">
+                            <p className="text-xl text-gray-700 leading-relaxed mb-6">
+                                <strong>Stoon Events</strong> est l'un des principaux organisateurs de fêtes d'anniversaire au Maroc,  nos organisateurs expérimentés de fête d’anniversaire organiseront une étroite coordination avec vous pour discuter les détails les plus fins de la célébration, tels que les options de thème de la fête et les activités que vous souhaitez pour la célébration . 
                             </p>
-                            
-                            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8">
-                                <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                                    Pourquoi choisir cette prestation ?
-                                </h3>
-                                <ul className="space-y-3">
-                                    {prestation.benefits.map((benefit, index) => (
-                                        <li key={index} className="flex items-start gap-3">
-                                            <svg 
-                                                className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" 
-                                                fill="currentColor" 
-                                                viewBox="0 0 20 20"
-                                            >
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                            </svg>
-                                            <span className="text-gray-700">{benefit}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                           
                         </div>
                     </div>
                 </section>
 
-                {/* Gallery Section - Slider */}
-                <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-                    <div className="container mx-auto px-4 lg:px-8">
-                        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-                            Galerie Photos
+                {/* Image Gallery Slider */}
+                <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+                    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 text-center mb-12">
+                            Nos Réalisations
                         </h2>
                         
                         <div className="relative max-w-5xl mx-auto">
@@ -98,11 +73,11 @@ export default function PrestationDetail({ prestation }) {
                                     className="flex transition-transform duration-700 ease-out"
                                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                                 >
-                                    {prestation.images.map((image, index) => (
-                                        <div key={index} className="w-full flex-shrink-0">
+                                    {images.map((num) => (
+                                        <div key={num} className="w-full flex-shrink-0">
                                             <img 
-                                                src={image}
-                                                alt={`${prestation.title} ${index + 1}`}
+                                                src={`/assets/images/nosPrestations/anniversaire/${num}.jpeg`}
+                                                alt={`Anniversaires ${num}`}
                                                 className="w-full h-[500px] object-contain"
                                             />
                                         </div>
@@ -132,7 +107,7 @@ export default function PrestationDetail({ prestation }) {
 
                             {/* Dots Indicator */}
                             <div className="flex justify-center gap-3 mt-8">
-                                {prestation.images.map((_, index) => (
+                                {images.map((_, index) => (
                                     <button
                                         key={index}
                                         onClick={() => goToSlide(index)}
@@ -148,14 +123,14 @@ export default function PrestationDetail({ prestation }) {
 
                             {/* Slide Counter */}
                             <div className="text-center mt-4 text-gray-600 font-medium">
-                                {currentSlide + 1} / {prestation.images.length}
+                                {currentSlide + 1} / {images.length}
                             </div>
                         </div>
                     </div>
                 </section>
-
-                <Footer />
             </div>
+
+            <Footer />
         </>
     );
 }

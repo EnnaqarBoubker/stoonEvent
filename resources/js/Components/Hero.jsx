@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 export default function Hero() {
     return (
-        <div className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <div className="relative h-[50vh] md:h-[70vh] lg:h-screen flex items-center justify-center overflow-hidden">
             {/* Video Background */}
             <div className="absolute inset-0 z-0">
                 <video

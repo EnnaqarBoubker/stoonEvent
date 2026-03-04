@@ -11,6 +11,7 @@ import ExperiencesBanner from '@/Components/ExperiencesBanner';
 import Footer from '@/Components/Footer';
 import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
+import LinkedInNewsletterBanner from '@/Components/LinkedInNewsletterBanner';
 
 export default function Home({ blogs = [] }) {
     const [counters, setCounters] = useState({ stat1: 0, stat2: 0, stat3: 0 });
@@ -204,8 +205,9 @@ export default function Home({ blogs = [] }) {
 
                 {/* References Carousel */}
                 <ReferencesCarousel />
-{/* Statistics Section */}
-                <section ref={statsRef} className="relative py-20 overflow-hidden">
+                
+                {/* Statistics Section */}
+                <section ref={statsRef} className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
                     {/* Background Image with Overlay */}
                     <div className="absolute inset-0">
                         <img
@@ -217,34 +219,34 @@ export default function Home({ blogs = [] }) {
                     </div>
 
                     {/* Content */}
-                    <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8 relative z-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 md:gap-10 lg:gap-12">
                             {/* Stat 1 */}
-                            <div className="text-center">
-                                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-3">
+                            <div className="text-center px-4 sm:px-2">
+                                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-2 sm:mb-3">
                                     {counters.stat1}
                                 </div>
-                                <div className="text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase">
+                                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase leading-tight">
                                     ANS D'EXPÉRIENCE
                                 </div>
                             </div>
 
                             {/* Stat 2 */}
-                            <div className="text-center">
-                                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-3">
+                            <div className="text-center px-4 sm:px-2">
+                                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-2 sm:mb-3">
                                    + {counters.stat2}
                                 </div>
-                                <div className="text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase">
+                                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase leading-tight">
                                     ÉVÉNEMENTS PAR AN
                                 </div>
                             </div>
 
                             {/* Stat 3 */}
-                            <div className="text-center">
-                                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-3">
+                            <div className="text-center px-4 sm:px-2">
+                                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-2 sm:mb-3">
                                    + {counters.stat3.toLocaleString('fr-FR')}
                                 </div>
-                                <div className="text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase">
+                                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white tracking-wider uppercase leading-tight">
                                     Visiteurs annuels – site web
                                 </div>
                             </div>
@@ -265,26 +267,26 @@ export default function Home({ blogs = [] }) {
 
                 {/* Blog Section */}
                 {blogs && blogs.length > 0 && (
-                    <section className="py-20 bg-white">
-                        <div className="container mx-auto px-4 lg:px-8">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                    <section className="py-12 sm:py-16 md:py-20 bg-white">
+                        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
+                            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+                                <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">
                                     Actualités & Conseils
                                 </h2>
-                                <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-4 rounded-full" />
-                                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                                <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-3 sm:mb-4 rounded-full" />
+                                <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                                     Découvrez nos derniers articles et conseils pour réussir vos événements
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
                                 {blogs.map((blog) => (
                                     <article
                                         key={blog.id}
-                                        className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+                                        className="bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group"
                                     >
                                         {blog.image && (
-                                            <div className="relative h-56 overflow-hidden">
+                                            <div className="relative h-48 sm:h-52 md:h-56 overflow-hidden">
                                                 <img
                                                     src={`/storage/${blog.image}`}
                                                     alt={blog.title}
@@ -294,31 +296,33 @@ export default function Home({ blogs = [] }) {
                                             </div>
                                         )}
                                         
-                                        <div className="p-6">
-                                            <div className="flex items-center text-sm text-gray-500 mb-3">
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div className="p-4 sm:p-5 md:p-6">
+                                            <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
+                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                 </svg>
-                                                {new Date(blog.published_at).toLocaleDateString('fr-FR', {
-                                                    year: 'numeric',
-                                                    month: 'long',
-                                                    day: 'numeric'
-                                                })}
+                                                <span className="truncate">
+                                                    {new Date(blog.published_at).toLocaleDateString('fr-FR', {
+                                                        year: 'numeric',
+                                                        month: 'long',
+                                                        day: 'numeric'
+                                                    })}
+                                                </span>
                                             </div>
                                             
-                                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                                                 {blog.title}
                                             </h3>
                                             
                                             {blog.excerpt && (
-                                                <p className="text-gray-600 mb-4 line-clamp-3">
+                                                <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3">
                                                     {blog.excerpt}
                                                 </p>
                                             )}
                                             
-                                            <button className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                                            <button className="inline-flex items-center text-sm sm:text-base text-blue-600 font-semibold hover:text-blue-700 transition-colors">
                                                 Lire la suite
-                                                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                                 </svg>
                                             </button>
@@ -330,6 +334,7 @@ export default function Home({ blogs = [] }) {
                     </section>
                 )}
 
+                <LinkedInNewsletterBanner />
                 <Footer />
             </div>
         </>

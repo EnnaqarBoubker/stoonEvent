@@ -6,7 +6,7 @@ export default function ExperiencesBanner() {
                 <img
                     src="/assets/images/experiencestoonevents.png"
                     alt="Créateur d'expériences - Stoon Events"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-contain object-center"
                 />
                 <div className="absolute inset-0 bg-black/10" />
             </div>
@@ -16,7 +16,7 @@ export default function ExperiencesBanner() {
                 <img
                     src="/assets/images/experiencestoonevents.png"
                     alt="Créateur d'expériences - Stoon Events"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-contain object-center"
                 />
                 <div className="absolute inset-0 bg-black/10" />
             </div>

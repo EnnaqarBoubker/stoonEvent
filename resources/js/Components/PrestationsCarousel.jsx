@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from '@inertiajs/react';
 
 export default function PrestationsCarousel() {
     const scrollRef = useRef(null);
@@ -32,70 +33,87 @@ export default function PrestationsCarousel() {
         {
             title: "Family day",
             image: "/assets/images/nosPrestations/family_day/1.jpeg",
+            link: "/prestations/family-day",
         },
         {
             title: "Événement d'entreprise",
-            image: "/assets/images/nosPrestations/evenement_entreprises/1.jpeg",
+            image: "/assets/images/nosPrestations/evenement_entreprises/3.jpeg",
+            link: "/prestations/evenement-entreprise",
         },
         {
             title: "Animation commerciale",
             image: "/assets/images/nosPrestations/animation_commerciale/1.jpeg",
+            link: "/prestations/animation-commerciale",
         },
         {
             title: "Images & son",
             image: "/assets/images/nosPrestations/image_et_son/1.jpeg",
+            link: "/prestations/images-son",
         },
         {
             title: "Inauguration",
             image: "/assets/images/nosPrestations/inauguration/1.jpeg",
+            link: "/prestations/inauguration",
         },
         {
             title: "Séminaire et conférence",
             image: "/assets/images/nosPrestations/seminaire_conferences/1.jpeg",
+            link: "/prestations/seminaire-conference",
         },
         {
             title: "Street marketing and publicité",
             image: "/assets/images/nosPrestations/street_marketing_publicite/1.jpeg",
+            link: "/prestations/street-marketing",
         },
         {
             title: "Kermesse",
             image: "/assets/images/nosPrestations/kermesse/1.jpeg",
+            link: "/prestations/kermesse",
         },
         {
             title: "Festival",
             image: "/assets/images/nosPrestations/festival/1.jpeg",
+            link: "/prestations/festival",
         },
         {
             title: "Anniversaires",
             image: "/assets/images/nosPrestations/anniversaire/1.jpeg",
+            link: "/prestations/anniversaires",
         },
         {
             title: "Atelier créatif",
-            image: "/assets/images/nosPrestations/atelier_creatifs/1.jpeg",
+            image: "/assets/images/nosPrestations/atelier_creatifs/2.jpeg",
+            link: "/prestations/atelier-creatif",
         },
         {
             title: "Soirée à thème",
             image: "/assets/images/nosPrestations/soiree_a_theme/1.jpeg",
+            link: "/prestations/soiree-theme",
         },
         {
             title: "Événement familiaux",
-            image: "/assets/images/nosPrestations/evenements_familiaux/1.jpeg",
+            image: "/assets/images/nosPrestations/evenements_familiaux/3.jpeg",
+            link: "/prestations/evenements-familiaux",
         },
         {
             title: "Fête d'école",
-            image: "/assets/images/nosPrestations/fete_ecole/1.jpeg",
+            image: "/assets/images/nosPrestations/fete_ecole/4.jpeg",
+            link: "/prestations/fete-ecole",
         },
         {
             title: "Colonie de vacances",
-            image: "/assets/images/nosPrestations/colonies_de_vacances/1.jpeg",
+            image: "/assets/images/nosPrestations/colonies_de_vacances/2.jpeg",
+            link: "/prestations/colonies-vacances",
         },
         {
             title: "Compagnie de sensibilisation",
-            image: "/assets/images/nosPrestations/campagne_de_sensibilisation/1.jpeg",
+            image: "/assets/images/nosPrestations/campagne_de_sensibilisation/2.jpeg",
+            link: "/prestations/sensibilisation",
         },
         {
             title: "Traiteurs",
-            image: "/assets/images/nosPrestations/traiteur/1.jpeg",
+            image: "/assets/images/nosPrestations/traiteur/2.jpeg",
+            link: "/prestations/traiteurs",
         },
     ];
 
@@ -218,8 +236,9 @@ Avec Stoon Events, offrez à votre public bien plus qu’un événement : une v�
                         }}
                     >
                         {prestations.map((prestation, index) => (
-                            <div
+                            <Link
                                 key={index}
+                                href={prestation.link}
                                 className="flex-shrink-0 w-80 group"
                             >
                                 <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
@@ -253,7 +272,7 @@ Avec Stoon Events, offrez à votre public bien plus qu’un événement : une v�
                                         style={{ borderColor: 'rgba(84, 130, 145, 0.3)' }}
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
