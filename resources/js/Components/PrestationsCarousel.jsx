@@ -77,7 +77,7 @@ export default function PrestationsCarousel() {
         },
         {
             title: "Anniversaires",
-            image: "/assets/images/nosPrestations/anniversaire/1.jpeg",
+            image: "/assets/images/nosPrestations/anniversaire/5.jpeg",
             link: "/prestations/anniversaires",
         },
         {

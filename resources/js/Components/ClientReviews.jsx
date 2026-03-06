@@ -130,7 +130,7 @@ export default function ClientReviews() {
                 {/* Section Header */}
                 <div className="text-center mb-8 sm:mb-10 md:mb-12">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">
-                       Reviews Clients
+                       Avis Clients
                     </h2>
                     <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
                         <div

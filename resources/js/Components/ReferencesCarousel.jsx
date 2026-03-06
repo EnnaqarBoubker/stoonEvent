@@ -1,45 +1,63 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ReferencesCarousel() {
     const scrollRef = useRef(null);
+    const [isPaused, setIsPaused] = useState(false);
+    const animationRef = useRef(null);
+    const scrollPosition = useRef(0);
 
     const references = [
-        "/assets/images/references/1.png",
+         "/assets/images/references/5.png",
+        "/assets/images/references/8.png",
+        "/assets/images/references/6.png",
+        "/assets/images/references/4.png",
         "/assets/images/references/2.png",
         "/assets/images/references/3.png",
-        "/assets/images/references/4.png",
-        "/assets/images/references/5.png",
-        "/assets/images/references/6.png",
-        "/assets/images/references/7.png",
-        "/assets/images/references/8.png",
-        "/assets/images/references/9.png",
+        "/assets/images/references/12.png",
         "/assets/images/references/10.png",
         "/assets/images/references/11.png",
-        "/assets/images/references/12.png",
-        "/assets/images/references/13.png",
+        "/assets/images/references/9.png",
+        "/assets/images/references/1.png",
+        "/assets/images/references/7.png",
     ];
 
-    // Triple duplicate for seamless loop
+    // Triple duplicate for seamless infinite loop
     const duplicatedReferences = [...references, ...references, ...references];
+
+    useEffect(() => {
+        const container = scrollRef.current;
+        if (!container) return;
+
+        const cardWidth = 180; // Average card width + gap
+        const totalWidth = cardWidth * references.length;
+        const speed = 0.5; // Pixels per frame (adjust for speed)
+
+        const animate = () => {
+            if (!isPaused && container) {
+                scrollPosition.current += speed;
+                
+                // Reset position when we've scrolled through one complete set
+                if (scrollPosition.current >= totalWidth) {
+                    scrollPosition.current = 0;
+                }
+                
+                container.style.transform = `translateX(-${scrollPosition.current}px)`;
+            }
+            animationRef.current = requestAnimationFrame(animate);
+        };
+
+        animationRef.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [isPaused, references.length]);
 
     return (
         <section className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
-            <style jsx>{`
-                @keyframes slideInfinite {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-33.333%);
-                    }
-                }
-                .animate-slide {
-                    animation: slideInfinite 6s linear infinite;
-                }
-                .animate-slide:hover {
-                    animation-play-state: paused;
-                }
-            `}</style>
+
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-8 sm:mb-10 md:mb-12">
@@ -133,21 +151,27 @@ export default function ReferencesCarousel() {
                             <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 lg:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
                             {/* Sliding Content */}
-                            <div className="overflow-hidden">
+                            <div 
+                                className="overflow-hidden"
+                                onMouseEnter={() => setIsPaused(true)}
+                                onMouseLeave={() => setIsPaused(false)}
+                            >
                                 <div
                                     ref={scrollRef}
-                                    className="flex gap-3 sm:gap-4 md:gap-6 lg:gap-8 animate-slide"
+                                    className="flex gap-6 md:gap-8"
+                                    style={{ willChange: 'transform' }}
                                 >
                                     {duplicatedReferences.map((ref, index) => (
                                         <div
-                                            key={index}
-                                            className="flex-shrink-0 w-[42vw] sm:w-[38vw] md:w-[35vw] lg:w-[30%] max-w-md"
+                                            key={`ref-${index}`}
+                                            className="flex-shrink-0 w-[160px] md:w-[180px]"
                                         >
-                                            <div className="bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-32 sm:h-36 md:h-44 lg:h-56 flex items-center justify-center p-4 sm:p-5 md:p-6 group hover:-translate-y-1 sm:hover:-translate-y-2 border border-gray-100 hover:border-yellow-300">
+                                            <div className="bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-28 md:h-32 lg:h-36 flex items-center justify-center p-4 md:p-5 group hover:-translate-y-1 border border-gray-100 hover:border-yellow-300">
                                                 <img
                                                     src={ref}
-                                                    alt={`Client ${(index % references.length) + 1}`}
+                                                    alt={`Reference ${(index % references.length) + 1}`}
                                                     className="max-h-full max-w-full object-contain transition-all duration-300 group-hover:scale-105"
+                                                    loading="lazy"
                                                 />
                                             </div>
                                         </div>

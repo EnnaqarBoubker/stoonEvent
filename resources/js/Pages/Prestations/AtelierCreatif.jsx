@@ -33,7 +33,7 @@ export default function AtelierCreatif() {
                 {/* Hero Section */}
                 <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
                     <img 
-                        src="/assets/images/nosPrestations/atelier_creatifs/1.jpeg" 
+                        src="/assets/images/nosPrestations/atelier_creatifs/5.jpeg" 
                         alt="Ateliers Créatifs" 
                         className="w-full h-full object-cover"
                     />

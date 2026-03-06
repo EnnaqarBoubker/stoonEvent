@@ -33,7 +33,7 @@ export default function FamilyDay() {
                 {/* Hero Section */}
                 <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
                     <img
-                        src="/assets/images/nosPrestations/family_day/1.jpeg"
+                        src="/assets/images/nosPrestations/family_day/5.jpeg"
                         alt="Family Day"
                         className="w-full h-full object-cover"
                     />

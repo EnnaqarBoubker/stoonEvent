@@ -6,7 +6,7 @@ import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function ImagesSon() {
-    const images = [1, 2, 3, 4, 5];
+    const images = [1, 5, 2];
 
     const [currentSlide, setCurrentSlide] = useState(0);
 

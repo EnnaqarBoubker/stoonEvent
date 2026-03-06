@@ -6,7 +6,7 @@ import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function Anniversaires() {
-    const images = [1, 2, 3, 4, 5];
+    const images = [5, 2, 3, 4, 1];
 
     const [currentSlide, setCurrentSlide] = useState(0);
 

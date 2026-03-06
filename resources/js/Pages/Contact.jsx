@@ -38,7 +38,7 @@ export default function Contact() {
                 {/* Hero Section */}
                 <section className="relative h-[40vh] md:h-[50vh] bg-gradient-to-br from-gray-900 via-gray-800 to-black  flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
-                        <div className="absolute inset-0 bg-[url('/assets/images/nosPrestations/evenement_entreprises/1.jpeg')] bg-cover bg-center"></div>
+                        <div className="absolute inset-0 bg-[url('/assets/images/contact.jpeg')] bg-cover bg-center"></div>
                     </div>
                     <div className="relative z-10 text-center px-4">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
@@ -99,7 +99,7 @@ export default function Contact() {
 
                                             <div>
                                                 <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                                                    Téléphone *
+                                                    Téléphone (optionel)
                                                 </label>
                                                 <input
                                                     type="tel"
@@ -107,7 +107,7 @@ export default function Contact() {
                                                     name="phone"
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    required
+                                                    
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
                                                     placeholder="+212 6XX XXX XXX"
                                                 />

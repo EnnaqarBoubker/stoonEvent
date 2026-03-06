@@ -17,9 +17,9 @@ export default function LinkedInNewsletterBanner() {
 
             {/* Content */}
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8 relative z-10">
-                <div className="flex flex-col sm:flex-row items-center justify-between py-6 sm:py-8 md:py-10 gap-4 sm:gap-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center py-6 sm:py-8 md:py-10 gap-4 sm:gap-6">
                     {/* Text Content */}
-                    <div className="flex-1 text-center sm:text-left">
+                    <div className="text-center sm:text-left">
                         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide uppercase">
                             S'abonner à la newsletter LinkedIn
                         </h3>

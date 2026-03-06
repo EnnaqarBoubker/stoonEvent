@@ -6,7 +6,7 @@ import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function SoireeTheme() {
-    const images = [1, 2, 3, 4, 5, 6];
+    const images = [1, 2, 3];
 
     const [currentSlide, setCurrentSlide] = useState(0);
 

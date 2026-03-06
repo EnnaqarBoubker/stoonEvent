@@ -6,7 +6,7 @@ import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function Traiteurs() {
-    const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const images = [ 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -33,7 +33,7 @@ export default function Traiteurs() {
                 {/* Hero Section */}
                 <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
                     <img 
-                        src="/assets/images/nosPrestations/traiteur/1.jpeg" 
+                        src="/assets/images/nosPrestations/traiteur/2.jpeg" 
                         alt="Traiteur" 
                         className="w-full h-full object-cover"
                     />

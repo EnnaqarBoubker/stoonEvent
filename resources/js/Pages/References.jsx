@@ -7,18 +7,18 @@ import ReferencesCarousel from '@/Components/ReferencesCarousel';
 
 export default function References() {
     const references = [
-        "/assets/images/references/1.png",
+        "/assets/images/references/5.png",
+        "/assets/images/references/8.png",
+        "/assets/images/references/6.png",
+        "/assets/images/references/4.png",
         "/assets/images/references/2.png",
         "/assets/images/references/3.png",
-        "/assets/images/references/4.png",
-        "/assets/images/references/5.png",
-        "/assets/images/references/6.png",
-        "/assets/images/references/7.png",
-        "/assets/images/references/8.png",
-        "/assets/images/references/9.png",
+        "/assets/images/references/12.png",
         "/assets/images/references/10.png",
         "/assets/images/references/11.png",
-        "/assets/images/references/12.png",
+        "/assets/images/references/9.png",
+        "/assets/images/references/1.png",
+        "/assets/images/references/7.png",
     ];
 
     return (
@@ -59,12 +59,12 @@ export default function References() {
                                 {references.map((ref, index) => (
                                     <div 
                                         key={index}
-                                        className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex items-center justify-center"
+                                        className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex items-center justify-center min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
                                     >
                                         <img 
                                             src={ref} 
                                             alt={`Référence ${index + 1}`}
-                                            className="max-w-full h-auto object-contain max-h-16 sm:max-h-24 lg:max-h-32"
+                                            className="w-full h-full object-contain"
                                         />
                                     </div>
                                 ))}
