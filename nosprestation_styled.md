@@ -351,7 +351,7 @@ Avec Stoon Events, les colonies de vacances deviennent bien plus qu'un simple s�
 
 **Stoon Events** - Créateur d'expériences
 
-📧 Email : contact@stoonevents.ma  
+📧 Email : contact@stoonevents.com  
 📱 Téléphone : +212 701-170027  
 📍 Adresse : Etage 1 N°2, 53 Rue de Grenoble, Casablanca 20303, Maroc
 

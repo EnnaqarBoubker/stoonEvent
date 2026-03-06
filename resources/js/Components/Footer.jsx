@@ -35,13 +35,14 @@ export default function Footer() {
                                 />
                             </div>
                             <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                                Avec stoon events zéro stress 100%  événement magique
+                                Avec stoon events zéro stress <br />
+                                100%  événement magique
                             </p>
                             <Link
                                 href="/devis"
                                 className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold rounded-lg transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
                             >
-                                <span>Demander de Devis</span>
+                                <span>Demandez votre Devis</span>
                                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
@@ -98,10 +99,10 @@ export default function Footer() {
                                     <div>
                                         <p className="text-xs text-gray-500 mb-1">Email</p>
                                         <a
-                                            href="mailto:contact@stoonevents.ma"
+                                            href="mailto:contact@stoonevents.com"
                                             className="text-gray-300 hover:text-yellow-400 transition-colors break-all text-sm sm:text-base"
                                         >
-                                            contact@stoonevents.ma
+                                            contact@stoonevents.com
                                         </a>
                                     </div>
                                 </li>

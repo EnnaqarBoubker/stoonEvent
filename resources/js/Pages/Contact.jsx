@@ -1,31 +1,20 @@
 import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { useRef, useEffect } from 'react';
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-    });
+    const [state, handleSubmit] = useForm('mdawoppd');
+    const formRef = useRef(null);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
-    };
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
+    useEffect(() => {
+        if (state.succeeded && formRef.current) {
+            formRef.current.reset();
+        }
+    }, [state.succeeded]);
 
     return (
         <>
@@ -63,7 +52,17 @@ export default function Contact() {
                                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
                                         Envoyez-nous un Message
                                     </h2>
-                                    <form onSubmit={handleSubmit} className="space-y-6">
+
+                                    {state.succeeded && (
+                                        <div className="flex items-center gap-3 bg-green-50 border border-green-300 text-green-800 rounded-xl px-5 py-4 mb-6">
+                                            <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <p className="font-semibold">Merci ! Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.</p>
+                                        </div>
+                                    )}
+
+                                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                                         <div>
                                             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
                                                 Nom Complet *
@@ -72,8 +71,6 @@ export default function Contact() {
                                                 type="text"
                                                 id="name"
                                                 name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
                                                 required
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
                                                 placeholder="Votre nom"
@@ -89,12 +86,11 @@ export default function Contact() {
                                                     type="email"
                                                     id="email"
                                                     name="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
                                                     required
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
                                                     placeholder="votre@email.com"
                                                 />
+                                                <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
                                             </div>
 
                                             <div>
@@ -105,9 +101,6 @@ export default function Contact() {
                                                     type="tel"
                                                     id="phone"
                                                     name="phone"
-                                                    value={formData.phone}
-                                                    onChange={handleChange}
-                                                    
                                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
                                                     placeholder="+212 6XX XXX XXX"
                                                 />
@@ -122,8 +115,6 @@ export default function Contact() {
                                                 type="text"
                                                 id="subject"
                                                 name="subject"
-                                                value={formData.subject}
-                                                onChange={handleChange}
                                                 required
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
                                                 placeholder="L'objet de votre message"
@@ -137,20 +128,20 @@ export default function Contact() {
                                             <textarea
                                                 id="message"
                                                 name="message"
-                                                value={formData.message}
-                                                onChange={handleChange}
                                                 required
                                                 rows="6"
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all resize-none"
                                                 placeholder="Décrivez-nous votre projet ou posez-nous vos questions..."
                                             ></textarea>
+                                            <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
                                         </div>
 
                                         <button
                                             type="submit"
-                                            className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-gray-900 font-bold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                                            disabled={state.submitting}
+                                            className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-gray-900 font-bold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                                         >
-                                            Envoyer le Message
+                                            {state.submitting ? 'Envoi en cours...' : 'Envoyer le Message'}
                                         </button>
                                     </form>
                                 </div>
@@ -215,8 +206,8 @@ export default function Contact() {
                                             </div>
                                             <div>
                                                 <h3 className="font-bold text-gray-800 text-lg mb-1">Email</h3>
-                                                <a href="mailto:contact@stoonevents.ma" className="text-gray-600 hover:text-yellow-600 transition-colors">
-                                                    contact@stoonevents.ma
+                                                <a href="mailto:contact@stoonevents.com" className="text-gray-600 hover:text-yellow-600 transition-colors">
+                                                    contact@stoonevents.com
                                                 </a>
                                             </div>
                                         </div>

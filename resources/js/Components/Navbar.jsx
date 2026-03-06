@@ -142,7 +142,7 @@ export default function Navbar() {
                             href="/devis"
                             className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 px-6 py-2.5 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105"
                         >
-                            Demande votre Devis
+                            Demandez votre Devis
                         </Link>
                     </div>
 

@@ -19,11 +19,11 @@ Coordonnées :
 
 📞 Téléphone : 0701170027
 
-✉️ Email : contact@stoonevents.ma
+✉️ Email : contact@stoonevents.com
 
 📍 Adresse : Etage 1 N°2, 53 Rue de Grenoble, Casablanca 20303
 
-🌐 Site web : www.stoonevents.ma
+🌐 Site web : www.stoonevents.com
 
 📌 3. Objectifs du Site Web
 🟢 Objectifs Généraux

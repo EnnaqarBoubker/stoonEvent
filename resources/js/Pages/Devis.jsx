@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
+import { useForm as useFormspree, ValidationError } from '@formspree/react';
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import SocialSidebar from '@/Components/SocialSidebar';
@@ -8,6 +9,8 @@ import WhatsAppButton from '@/Components/WhatsAppButton';
 export default function Devis() {
     const [clientType, setClientType] = useState('particulier');
     const [captchaVerified, setCaptchaVerified] = useState(false);
+    const [devisState, devisSubmit] = useFormspree('mdawoppd');
+    const [particulierState, particulierSubmit] = useFormspree('xwvrkwap');
     const [formData, setFormData] = useState({
         fullName: '',
         company: '',
@@ -47,6 +50,20 @@ export default function Devis() {
     ];
 
     useEffect(() => {
+        if (devisState.succeeded || particulierState.succeeded) {
+            setFormData({
+                fullName: '',
+                company: '',
+                email: '',
+                phone: '',
+                prestation: '',
+                message: ''
+            });
+            setCaptchaVerified(false);
+        }
+    }, [devisState.succeeded, particulierState.succeeded]);
+
+    useEffect(() => {
         // Load reCAPTCHA script
         const script = document.createElement('script');
         script.src = 'https://www.google.com/recaptcha/api.js';
@@ -65,14 +82,17 @@ export default function Devis() {
         };
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!captchaVerified) {
             alert('Veuillez vérifier le captcha');
             return;
         }
-        console.log('Devis submitted:', { clientType, ...formData });
-        // Handle form submission
+        if (clientType === 'entreprise') {
+            await devisSubmit(e);
+        } else {
+            await particulierSubmit(e);
+        }
     };
 
     const handleChange = (e) => {
@@ -98,7 +118,7 @@ export default function Devis() {
                     </div>
                     <div className="relative z-10 text-center px-4">
                         <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-                            Demande de
+                            Demandez votre
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 mt-2">
                                 Devis Gratuit
                             </span>
@@ -201,6 +221,22 @@ export default function Devis() {
 
                             {/* Form */}
                             <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+                                {clientType === 'particulier' && particulierState.succeeded && (
+                                    <div className="flex items-center gap-3 bg-green-50 border border-green-300 text-green-800 rounded-xl px-5 py-4 mb-6">
+                                        <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <p className="font-semibold">Merci ! Votre demande a bien été envoyée. Nous vous contacterons sous 24h.</p>
+                                    </div>
+                                )}
+                                {clientType === 'entreprise' && devisState.succeeded && (
+                                    <div className="flex items-center gap-3 bg-green-50 border border-green-300 text-green-800 rounded-xl px-5 py-4 mb-6">
+                                        <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <p className="font-semibold">Merci ! Votre demande de devis a bien été envoyée. Nous vous contacterons sous 24h.</p>
+                                    </div>
+                                )}
                                 <form onSubmit={handleSubmit} className="space-y-8">
                                     {/* Particulier Form */}
                                     {clientType === 'particulier' && (
@@ -430,7 +466,7 @@ export default function Devis() {
                                     <div className="pt-4">
                                         <button
                                             type="submit"
-                                            disabled={!captchaVerified}
+                                            disabled={!captchaVerified || (clientType === 'entreprise' && devisState.submitting) || (clientType === 'particulier' && particulierState.submitting)}
                                             className={`w-full font-bold py-4  px-8 rounded-xl transition-all shadow-lg text-lg ${
                                                 captchaVerified
                                                     ? clientType === 'particulier'
@@ -439,7 +475,14 @@ export default function Devis() {
                                                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                             }`}
                                         >
-                                            {captchaVerified ? (
+                                            {((clientType === 'entreprise' && devisState.submitting) || (clientType === 'particulier' && particulierState.submitting)) ? (
+                                                <span className="flex items-center justify-center gap-2">
+                                                    <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                    </svg>
+                                                    Envoi en cours...
+                                                </span>
+                                            ) : captchaVerified ? (
                                                 <span className="flex items-center justify-center gap-2">
                                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
