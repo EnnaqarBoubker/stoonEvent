@@ -6,7 +6,7 @@ import SocialSidebar from "@/Components/SocialSidebar";
 import WhatsAppButton from "@/Components/WhatsAppButton";
 
 export default function FamilyDay() {
-    const images = [1, 2, 3, 4];
+    const images = [6, 2, 3, 1, 2, 4];
 
     const [currentSlide, setCurrentSlide] = useState(0);
 

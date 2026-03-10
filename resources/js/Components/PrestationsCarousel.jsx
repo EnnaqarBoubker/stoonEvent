@@ -142,16 +142,17 @@ export default function PrestationsCarousel() {
 
     const scroll = (direction) => {
         const container = scrollRef.current;
-        const scrollAmount = 400;
+        // Scroll by one card width for proper snapping
+        const card = container.querySelector('a');
+        const cardWidth = card ? card.offsetWidth + 24 : 340; // card width + gap
         
-        // Pause auto-scroll temporarily when user clicks navigation
         setIsPaused(true);
         setTimeout(() => setIsPaused(false), 3000);
         
         if (direction === 'left') {
-            container.scrollLeft -= scrollAmount;
+            container.scrollLeft -= cardWidth;
         } else {
-            container.scrollLeft += scrollAmount;
+            container.scrollLeft += cardWidth;
         }
     };
 
@@ -191,23 +192,23 @@ Avec Stoon Events, offrez à votre public bien plus qu’un événement : une v�
 
                 {/* Carousel Container */}
                 <div className="relative max-w-7xl mx-auto">
-                    {/* Navigation Buttons */}
+                    {/* Navigation Buttons - outside overflow, always visible */}
                     <button
                         onClick={() => scroll('left')}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 -translate-x-1 sm:-translate-x-2"
                         style={{ color: '#548291' }}
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
 
                     <button
                         onClick={() => scroll('right')}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 translate-x-1 sm:translate-x-2"
                         style={{ color: '#548291' }}
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -219,7 +220,7 @@ Avec Stoon Events, offrez à votre public bien plus qu’un événement : une v�
                     {/* Scrollable Content */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing scroll-smooth px-4"
+                        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing px-8 sm:px-4"
                         onMouseDown={handleMouseDown}
                         onMouseUp={handleMouseUp}
                         onMouseEnter={() => setIsPaused(true)}
@@ -233,13 +234,15 @@ Avec Stoon Events, offrez à votre public bien plus qu’un événement : une v�
                         style={{
                             scrollbarWidth: 'none',
                             msOverflowStyle: 'none',
+                            scrollSnapType: 'x mandatory',
                         }}
                     >
                         {prestations.map((prestation, index) => (
                             <Link
                                 key={index}
                                 href={prestation.link}
-                                className="flex-shrink-0 w-80 group"
+                                className="flex-shrink-0 w-[calc(100vw-5rem)] sm:w-80 group"
+                                style={{ scrollSnapAlign: 'center' }}
                             >
                                 <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                                     {/* Image */}

@@ -180,23 +180,29 @@ export default function Navbar() {
 
                 {/* Mobile Menu */}
                 <div 
-                    className={`xl:hidden border-t border-white/20 bg-white/95 backdrop-blur-md overflow-hidden transition-all duration-500 ease-in-out ${
-                        isMobileMenuOpen ? 'max-h-[600px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'
+                    className={`xl:hidden fixed left-0 right-0 top-20 bottom-0 bg-white overflow-y-auto transition-all duration-500 ease-in-out z-40 ${
+                        isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'
                     }`}
                 >
-                    <div className="flex flex-col space-y-4">
+                    <div className="flex flex-col space-y-6 px-6 py-8 min-h-full">
                             <Link
                                 href="/"
-                                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                                className="text-gray-900 hover:text-yellow-500 font-semibold text-lg transition-colors py-1 border-b border-gray-100"
                             >
                                 Accueil
                             </Link>
                             
+                             <Link
+                                href="/about"
+                                className="text-gray-900 hover:text-yellow-500 font-semibold text-lg transition-colors py-1 border-b border-gray-100"
+                            >
+                                Pourquoi Stoon Events
+                            </Link>
                             {/* Mobile Prestations Dropdown */}
-                            <div>
+                            <div className="border-b border-gray-100">
                                 <button
                                     onClick={() => setIsMobilePrestationsOpen(!isMobilePrestationsOpen)}
-                                    className="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                                    className="flex items-center justify-between w-full text-gray-900 hover:text-yellow-500 font-semibold text-lg transition-colors py-1"
                                 >
                                     Nos Prestations
                                     <svg 
@@ -222,7 +228,7 @@ export default function Navbar() {
                                             <Link
                                                 key={index}
                                                 href={`/prestations/${prestation.slug}`}
-                                                className="block text-gray-600 hover:text-blue-600 text-sm transition-all duration-200 py-1.5 hover:pl-2 border-l-2 border-transparent hover:border-blue-500"
+                                                className="block text-gray-700 hover:text-yellow-500 text-sm font-medium transition-all duration-200 py-2 hover:pl-2 border-l-2 border-transparent hover:border-yellow-400"
                                             >
                                                 {prestation.title}
                                             </Link>
@@ -232,20 +238,15 @@ export default function Navbar() {
                             </div>
                             
                             <Link
-                                href="/services"
-                                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                                href="/references"
+                                className="text-gray-900 hover:text-yellow-500 font-semibold text-lg transition-colors py-1 border-b border-gray-100"
                             >
-                                Services
+                                Nos Références
                             </Link>
-                            <Link
-                                href="/about"
-                                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-                            >
-                                À Propos
-                            </Link>
+                           
                             <Link
                                 href="/contact"
-                                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                                className="text-gray-900 hover:text-yellow-500 font-semibold text-lg transition-colors py-1 border-b border-gray-100"
                             >
                                 Contact
                             </Link>
@@ -253,7 +254,7 @@ export default function Navbar() {
                                 href="/devis"
                                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 px-6 py-2.5 rounded-full font-bold transition-colors text-center"
                             >
-                                Demande de Devis
+                                 Demandez votre Devis
                             </Link>
                         </div>
                     </div>

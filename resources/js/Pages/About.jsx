@@ -16,7 +16,7 @@ export default function About() {
                 {/* Hero Section */}
                 <section className="relative h-[50vh] md:h-[60vh] bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 opacity-20">
-                        <div className="absolute inset-0 bg-[url('/assets/images/nosPrestations/evenement_entreprises/1.jpeg')] bg-cover bg-center"></div>
+                        <div className="absolute inset-0 bg-[url('/assets/images/about.jpeg')] bg-cover bg-center"></div>
                     </div>
                     <div className="relative z-10 text-center px-4">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6">
