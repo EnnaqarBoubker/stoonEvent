@@ -6,7 +6,7 @@ import SocialSidebar from '@/Components/SocialSidebar';
 import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function EvenementEntreprise() {
-    const images = [3, 2, 1];
+    const images = [6, 9, 3, 2, 1];
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {

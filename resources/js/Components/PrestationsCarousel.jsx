@@ -37,7 +37,7 @@ export default function PrestationsCarousel() {
         },
         {
             title: "Événement d'entreprise",
-            image: "/assets/images/nosPrestations/evenement_entreprises/3.jpeg",
+            image: "/assets/images/nosPrestations/evenement_entreprises/6.jpeg",
             link: "/prestations/evenement-entreprise",
         },
         {
